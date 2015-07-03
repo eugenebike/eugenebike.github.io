@@ -1,11 +1,8 @@
 //Base Map
 L.mapbox.accessToken = 'pk.eyJ1Ijoibmhob3JuZXIiLCJhIjoiaE5kZE5KTSJ9.FBXIBLr6wC0wdsGq_qBsVA';
-var bounds = L.latLngBounds(L.latLng(43.979395, -123.279136), L.latLng(44.173753, -122.839683)); // (Southwest, Northeast)
-var map = L.mapbox.map('map', 'rdc.5ae54ca4', {
-    maxBounds: bounds,
-    maxZoom: 15,
-    minZoom: 11
-}).setView([44.058460, -123.073983], 13);
+var bounds = L.latLngBounds(L.latLng(43.97, -123.279136), L.latLng(44.173753, -122.839683)); // (Southwest, Northeast)
+var map = L.mapbox.map('map', 'rdc.5ae54ca4', {maxBounds: bounds, maxZoom: 16, minZoom: 13, infoControl: false, attributionControl: true}).setView([44.058460, -123.073983], 14);
+map.attributionControl.addAttribution('Data from: <a href="https://www.eugene-or.gov/" style="color: #4682B4;">City of Eugene</a> and <a href="http://www.lcog.org/" style="color: #4682B4;">Lane Council of Governments</a>');
 
 //Data
 var load_data = function() {
