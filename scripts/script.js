@@ -42,14 +42,5 @@ var load_data = function() {
             });
         }
     });
-
-// //Change line weight based on zoom level
-// map.on('zoomend', function() {
-//     if (map.getZoom() > 13) {
-//         $("svg > g > path").css("stroke-width", "1");
-//     } else {
-//         $("svg > g > path").css("stroke-width", "2");
-//     }
-// });
 }
 $( document ).ready(load_data());
