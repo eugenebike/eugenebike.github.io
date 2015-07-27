@@ -19,10 +19,10 @@ var load_data = function() {
                     data.features[i].geometry.coordinates[points][0] = data.features[i].geometry.coordinates[points][0] - 0.002899 //Long
                     data.features[i].geometry.coordinates[points][1] = data.features[i].geometry.coordinates[points][1] - 0.007195 // Lat
                 }
-                console.log(data.features[i].properties.est_vol);
+                console.log(data.features[i].properties.bikefac);
                 data.features[i].properties.stroke = style_color[data.features[i].properties.condition];
                 data.features[i].properties['stroke-width'] = 3;
-                if (data.feature.properties.condition == "Kids with Training") {
+                if (data.feature[i].properties.condition == "Kids with Training") {
                     data.features[i].properties['stroke-width'] = 4;
                 }
             }
