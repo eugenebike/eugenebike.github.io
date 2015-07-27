@@ -10,10 +10,6 @@ var load_data = function() {
         type: 'GET',
         url: "./data/BikeFacilty_June24d.json",
         success: function(data) {
-
-            ////Test
-            //console.log(data.features[0]);
-
             //Style key
             var style_color = {"Confident and Enthused":"#fee08b", "Kids with Training":"#1a9850", "Most Adults":"#91cf60", "Strong and Fearless":"#af8dc3"}
 
@@ -23,15 +19,24 @@ var load_data = function() {
                     data.features[i].geometry.coordinates[points][0] = data.features[i].geometry.coordinates[points][0] - 0.002899 //Long
                     data.features[i].geometry.coordinates[points][1] = data.features[i].geometry.coordinates[points][1] - 0.007195 // Lat
                 }
-                console.log(data.features[i].properties);
+                console.log(data.features[i].properties.est_vol);
                 data.features[i].properties.stroke = style_color[data.features[i].properties.condition];
                 data.features[i].properties['stroke-width'] = 3;
+                if (layer.feature.properties.condition == "") {
+                    data.features[i].properties['stroke-width'] = 4;
+                }
             }
 
             var featureLayer = L.mapbox.featureLayer(data).addTo(map);
 
+            var faciltyDictionary = {"rmup":"Multi-Use Path", "bike lanes":"Bike Lanes"}
+
             featureLayer.eachLayer(function(layer) {
-                var content = '<span style="font-weight:bold; font-size:120%;">' + layer.feature.properties.str_name2 + '<\/span><br \/>Speed: ' + layer.feature.properties.Speed + '<br \/>Condition: ' + layer.feature.properties.condition + '<br \/>Estimated Traffic Volume: ' + layer.feature.properties.est_vol;
+                var content = '<span style="font-weight:bold; font-size:120%;">' + layer.feature.properties.str_name2 + ' ' + layer.feature.properties.eval + '/10 <\span><br>
+                Condition: ' + layer.feature.properties.condition + '<br>
+                Speed: ' + layer.feature.properties.Speed + '<br>
+                Estimated Traffic Volume: ' + layer.feature.properties.est_vol + '<br>
+                Bike Facilty: ' + faciltyDictionary[layer.feature.properties.bikefac];
                 layer.bindPopup(content);
             });
 
