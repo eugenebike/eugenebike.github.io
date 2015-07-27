@@ -14,12 +14,16 @@ var load_data = function() {
             var style_color = {"Confident and Enthused":"#fee08b", "Kids with Training":"#1a9850", "Most Adults":"#91cf60", "Strong and Fearless":"#af8dc3"}
 
             //Adjust data
+            var catsassss = []
             for (var i in data.features) {
                 for (var points in data.features[i].geometry.coordinates) {
                     data.features[i].geometry.coordinates[points][0] = data.features[i].geometry.coordinates[points][0] - 0.002899 //Long
                     data.features[i].geometry.coordinates[points][1] = data.features[i].geometry.coordinates[points][1] - 0.007195 // Lat
                 }
-                console.log(data.features[i].properties.bikefac);
+                if (!data.features[i].properties.bikefac in catsassss) {
+                    console.log(data.features[i].properties.bikefac);
+                    catsassss.push(data.features[i].properties.bikefac);
+                }
                 data.features[i].properties.stroke = style_color[data.features[i].properties.condition];
                 data.features[i].properties['stroke-width'] = 3;
                 if (data.features[i].properties.condition == "Kids with Training") {
@@ -29,7 +33,7 @@ var load_data = function() {
 
             var featureLayer = L.mapbox.featureLayer(data).addTo(map);
 
-            var faciltyDictionary = {"rmup":"Multi-Use Path", "bike lanes":"Bike Lanes"}
+            var faciltyDictionary = {"rmup":"Multi-Use Path", "bike lanes":"Bike Lane", "bike lane TF": "Bike Lane TF"}
 
             featureLayer.eachLayer(function(layer) {
                 var content = '<span style="font-weight:bold; font-size:120%;">' + layer.feature.properties.str_name2 + ' ' + layer.feature.properties.eval + '/10 <\span><br>Condition: ' + layer.feature.properties.condition + '<br>Speed: ' + layer.feature.properties.Speed + '<br>Estimated Traffic Volume: ' + layer.feature.properties.est_vol + '<br>Bike Facilty: ' + faciltyDictionary[layer.feature.properties.bikefac];
