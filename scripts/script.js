@@ -32,11 +32,7 @@ var load_data = function() {
             var faciltyDictionary = {"rmup":"Multi-Use Path", "bike lanes":"Bike Lanes"}
 
             featureLayer.eachLayer(function(layer) {
-                var content = '<span style="font-weight:bold; font-size:120%;">' + layer.feature.properties.str_name2 + ' ' + layer.feature.properties.eval + '/10 <\span><br>
-                Condition: ' + layer.feature.properties.condition + '<br>
-                Speed: ' + layer.feature.properties.Speed + '<br>
-                Estimated Traffic Volume: ' + layer.feature.properties.est_vol + '<br>
-                Bike Facilty: ' + faciltyDictionary[layer.feature.properties.bikefac];
+                var content = '<span style="font-weight:bold; font-size:120%;">' + layer.feature.properties.str_name2 + ' ' + layer.feature.properties.eval + '/10 <\span><br>Condition: ' + layer.feature.properties.condition + '<br>Speed: ' + layer.feature.properties.Speed + '<br>Estimated Traffic Volume: ' + layer.feature.properties.est_vol + '<br>Bike Facilty: ' + faciltyDictionary[layer.feature.properties.bikefac];
                 layer.bindPopup(content);
             });
 
