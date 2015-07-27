@@ -22,7 +22,7 @@ var load_data = function() {
                 console.log(data.features[i].properties.est_vol);
                 data.features[i].properties.stroke = style_color[data.features[i].properties.condition];
                 data.features[i].properties['stroke-width'] = 3;
-                if (layer.feature.properties.condition == "") {
+                if (data.feature.properties.condition == "Kids with Training") {
                     data.features[i].properties['stroke-width'] = 4;
                 }
             }
