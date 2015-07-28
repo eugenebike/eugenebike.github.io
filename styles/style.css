@@ -1,9 +1,21 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: Arial;
 }
-html, body, #map {
+html, body{
     height: 100%;
+}
+#map {
+    height: 100%;
+}
+.menu {
+    padding: 5px;
+    background-color: #FFF;
+    border: 1px solid #BBB;
+}
+.menu:visited {
+    color: white;
 }
 .leaflet-popup-content p{
     margin-bottom: 0px;

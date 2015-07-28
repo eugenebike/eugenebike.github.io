@@ -1,8 +1,20 @@
 //Base Map
 L.mapbox.accessToken = 'pk.eyJ1Ijoibmhob3JuZXIiLCJhIjoiaE5kZE5KTSJ9.FBXIBLr6wC0wdsGq_qBsVA';
 var bounds = L.latLngBounds(L.latLng(43.97, -123.279136), L.latLng(44.173753, -122.839683)); // (Southwest, Northeast)
-var map = L.mapbox.map('map', 'rdc.5ae54ca4', {maxBounds: bounds, maxZoom: 16, minZoom: 13, infoControl: false, attributionControl: true}).setView([44.058460, -123.073983], 14);
+var map = L.mapbox.map('map', 'rdc.5ae54ca4', {maxBounds: bounds, maxZoom: 16, minZoom: 13, infoControl: false, attributionControl: true, zoomControl: false}).setView([44.058460, -123.073983], 14);
 map.attributionControl.addAttribution('Data from: <a href="https://www.eugene-or.gov/" style="color: #4682B4;">City of Eugene</a> and <a href="http://www.lcog.org/" style="color: #4682B4;">Lane Council of Governments</a>');
+new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
+// Menu
+var menu = L.control({ position: 'topleft' });
+menu.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'menu');
+    div.innerHTML = '<h1>Comfort of Bicyclists in Eugene, Oregon</h1><a href="https://github.com/eugenebike/eugenebike.github.io">Project Site</a> ';
+    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+    L.DomEvent.disableClickPropagation(div);
+    return div;
+};
+map.addControl(menu);
 
 //Data
 var load_data = function() {
