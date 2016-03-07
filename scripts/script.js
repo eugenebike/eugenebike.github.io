@@ -9,7 +9,7 @@ new L.Control.Zoom({ position: 'topright' }).addTo(map);
 var menu = L.control({ position: 'topleft' });
 menu.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'menu');
-    div.innerHTML = '<h1>Comfort of Bicyclists in Eugene, Oregon</h1><a href="https://github.com/eugenebike/eugenebike.github.io">Project Site</a> ';
+    div.innerHTML = '<h1>Eug.bike Beta</h1><p>This map is under construction. However, you can still hover over colored roads to learn more about their biking conditions.</p> <a href="https://github.com/eugenebike/eugenebike.github.io">GitHub</a> ';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     L.DomEvent.disableClickPropagation(div);
     return div;
