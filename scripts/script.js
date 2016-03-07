@@ -9,7 +9,7 @@ new L.Control.Zoom({ position: 'topright' }).addTo(map);
 var menu = L.control({ position: 'topleft' });
 menu.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'menu');
-    div.innerHTML = '<h1>Eug.bike Beta</h1><p>This map is under construction.</p> <a href="https://github.com/eugenebike/eugenebike.github.io">GitHub</a> ';
+    div.innerHTML = '<h1>Eug.bike Beta</h1><p>This map is in development.</p> <a href="https://github.com/eugenebike/eugenebike.github.io">GitHub</a> ';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     L.DomEvent.disableClickPropagation(div);
     return div;
